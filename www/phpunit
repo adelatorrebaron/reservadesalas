@@ -1,0 +1,7 @@
+#!/bin/bash
+
+args="$@"
+command="vendor/bin/phpunit $args"
+echo "$command"
+docker exec -it php-fpm bash -c "/bin/bash -c \"$command\""
+##docker exec -it laravel-app bash -c "sudo -u devuser /bin/bash -c \"$command\""

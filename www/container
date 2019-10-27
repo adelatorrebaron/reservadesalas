@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker exec -it php-fpm bash -c "/bin/bash"
+## docker exec -it php-fpm bash -c "sudo -u userdev /bin/bash"
