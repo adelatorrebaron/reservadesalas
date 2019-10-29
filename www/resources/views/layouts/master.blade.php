@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ReSa | Reserva de Salas</title>
+  <title>Reserva de Salas</title>
 
-  <link rel="stylesheet" href="./css/app.css">
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 </head>
 
 <body class="hold-transition layout-navbar-fixed">
-  <div class="wrapper">
+  <div class="wrapper" id="app">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -27,8 +27,8 @@
     
           <li class="nav-item dropdown user user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                <img src="./img/profile.jpg" class="user-image img-circle elevation-2 alt="User Image">
-                <span class="hidden-xs">Alejandro de la Torre Barón</span>
+                <img src="./img/profile.jpg" class="user-image img-circle elevation-2" alt="User Image">
+                <span class="hidden-xs"> {{ Auth::user()->name }} </span>
               </a>
               <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <!-- User image -->
@@ -63,11 +63,11 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4  sidebar-focused">
       <!-- Brand Logo -->
-      <a href="./dashboard.html" class="brand-link navbar-teal">
+      <router-link to="/dashboard" class="brand-link navbar-teal">
         <img src="./img/logo.png" alt="Resa Logo" class="brand-image img-circle elevation-3"
              style="opacity: .8">
         <span class="brand-text font-weight-bold">Reserva de Salas</span>
-      </a>
+      </router-link>
   
       <!-- Sidebar -->
       <div class="sidebar">
@@ -79,10 +79,10 @@
                  with font-awesome or any other icon font library -->
             <li class="nav-header">SEGURIDAD</li>
             <li class="nav-item">
-              <a href="./usuarios.index.html" class="nav-link">
+              <router-link to="/usuarios" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>Usuarios</p>
-              </a>
+              </router-link>
             </li>
             <li class="nav-item">
               <a href="./permisos.index.html" class="nav-link">
@@ -112,7 +112,7 @@
             </li>
             <li class="nav-item">
               <a href="./diasfestivos.index.html" class="nav-link">
-                <i class="nav-icon fas fa-calendar-alt"></i>
+                <i class="nav-icon fas fa-calendar-day"></i>
                 <p>Dias festivos</p>
               </a>
             </li>
@@ -144,8 +144,8 @@
             <li class="nav-header">GESTION DE RESERVAS</li>
             <li class="nav-item">
               <a href="./reservas.index.html" class="nav-link">
-                <i class="nav-icon far fa-calendar-alt"></i>
-                <p>Reservas</p>
+                <i class="nav-icon fas fa-calendar-alt"></i>
+                <p>Mis reservas</p>
               </a>
             </li>
           </ul>
@@ -157,38 +157,15 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-3">
-            <div class="col-sm-6">
-              <h1>
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                Dashboard
-              </h1>
-            </div>
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
-              </ol>
-            </div>
-          </div>
-        </div><!-- /.container-fluid -->
-      </section>
 
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
-          </div>
-          <!-- /.col-md-6 -->
-          <div class="col-lg-6">
-          </div>
-          <!-- /.col-md-6 -->
-        </div>
-        <!-- /.row -->
+
+        <!-- route outlet -->
+        <!-- component matched by the route will render here -->
+        <router-view></router-view>
+
       </div>
       <!-- /.container-fluid -->
     </div>
@@ -206,7 +183,7 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-<script src="./js/app.js"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 
 </body>
 </html>

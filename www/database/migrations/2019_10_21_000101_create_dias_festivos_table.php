@@ -15,19 +15,12 @@ class CreateDiasFestivosTable extends Migration
     {
         Schema::create('dias_festivos', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('fecha');
-            $table->string('descripcion', 50);
-
-            // Añadimos la clave foránea con Ministerios. ministerio_id
-			// Acordarse de añadir al array protected $fillable del fichero de modelo "DiasFestivos.php" la nueva columna:
-			// protected $fillable = array('fecha','descripcion','ministerios_id');
-            //$table->integer('ministerios_id')->unsigned();
+            $table->integer('tipo_de_festividad_id')->unsigned()->nullable();
+            $table->date('fecha')->unique();
+            $table->string('descripcion', 50)->nullable();
 
             // Indicamos cual es la clave foránea de esta tabla:
-            //$table->foreign('ministerios_id')->references('id')->on('ministerios');
-            
-            $table->timestamps();
-
+            $table->foreign('tipo_de_festividad_id')->references('id')->on('tipos_de_festividad')->onDelete('set null');
         });
     }
 

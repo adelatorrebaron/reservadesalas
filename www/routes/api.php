@@ -22,6 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(array('prefix' => 'v1'), function()
 {
 
+    Route::get('tiposdefestividad', 'TiposDeFestividadController@index')->name('tiposdefestividad.index');
+
     Route::get('diasfestivos', 'DiasFestivosController@index')->name('diasfestivos.index');
     Route::post('diasfestivos', 'DiasFestivosController@create')->name('diasfestivos.create');
 
